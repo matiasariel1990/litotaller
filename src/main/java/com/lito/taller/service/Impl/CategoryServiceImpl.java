@@ -2,6 +2,7 @@ package com.lito.taller.service.Impl;
 
 import com.lito.taller.dto.CategoryDTO;
 import com.lito.taller.entity.Category;
+import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.CategoryRepository;
 import com.lito.taller.service.CategoryService;
 import org.springframework.stereotype.Service;
@@ -40,8 +41,8 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
         Category category = categoryRepository.findById(
                 categoryDTO.getId()
-        ).orElseThrow();
-        category.setLabel(categoryDTO.getLabel());
+        ).orElseThrow(() -> new ResourseNotFoundExeption(Category.class.getName()));
+        category.setLabel(categoryDTO.getDescription());
         category.setColour(categoryDTO.getColour());
         Category categorySave = categoryRepository.save(category);
         return mapToDTO(categorySave);
@@ -51,7 +52,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(Long id) {
         Category category = categoryRepository.findById(
                 id
-        ).orElseThrow();
+        ).orElseThrow( () -> new ResourseNotFoundExeption(Category.class.getName()));
         categoryRepository.deleteById(id);
     }
 
@@ -64,7 +65,7 @@ public class CategoryServiceImpl implements CategoryService {
     private Category mapToEntity(CategoryDTO categoryDTO){
 
         return new Category(categoryDTO.getId(),
-                categoryDTO.getLabel(),
+                categoryDTO.getDescription(),
                 categoryDTO.getColour());
     }
 }
