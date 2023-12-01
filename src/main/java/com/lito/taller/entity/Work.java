@@ -23,31 +23,33 @@ public class Work {
     @Column(nullable = false, length = 500)
     String summary;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     Date date_reception;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = true)
     @Temporal(TemporalType.DATE)
     Date date_start;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = true)
     @Temporal(TemporalType.DATE)
     Date date_finish;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     Date date_pickup;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name="vehicle_id", nullable = false,
+                updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_VEHICLE_ID"))
     Vehicle vehicle;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name="client_id", nullable = false,
+                updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_CLIENT_ID"))
     Client client;
 
     @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
     List<Note> notes = new ArrayList<>();
-
-
 
 }

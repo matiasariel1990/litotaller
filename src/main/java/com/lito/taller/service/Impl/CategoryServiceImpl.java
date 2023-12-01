@@ -41,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryRepository.findById(
                 categoryDTO.getId()
         ).orElseThrow();
-        category.setDescription(categoryDTO.getDescription());
+        category.setLabel(categoryDTO.getDescription());
         category.setColour(categoryDTO.getColour());
         Category categorySave = categoryRepository.save(category);
         return mapToDTO(categorySave);
@@ -57,8 +57,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryDTO mapToDTO(Category category){
         return new CategoryDTO( category.getId(),
-                category.getDescription(),
-                category.getDescription());
+                category.getLabel(),
+                category.getLabel());
     }
 
     private Category mapToEntity(CategoryDTO categoryDTO){

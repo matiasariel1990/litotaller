@@ -25,18 +25,24 @@ public class Note {
 
     //revisar estrategias para las fechas
     @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.DATE) //limita a solo fecha
-    Date date;  //quiza usar Calendar?
+    @Temporal(TemporalType.DATE)
+    Date date;
 
     @Column(nullable = false, length = 500)
     String content;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name="vehicle_id", nullable = true,
+                updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_VEHICLE_ID"))
     Vehicle vehicle;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name="client_id", nullable = true,
+                updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_CLIENT_ID"))
     Client client;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name="work_id", nullable = true,
+                updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_WORK_ID"))
     Work work;
 }

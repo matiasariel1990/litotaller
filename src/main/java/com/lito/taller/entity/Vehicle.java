@@ -20,21 +20,23 @@ public class Vehicle {
     long id;
 
     @Column(nullable = false, length = 10)
-    String car_id;
+    String car_number;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     String brand;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     String model;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     int year;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = true, length = 200)
     String summary;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name="client_id", nullable = false,
+                updatable = true, foreignKey = @ForeignKey(name = "FK_VEHICLE_CLIENT_ID"))
     Client client;
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
