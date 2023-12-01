@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CategoryDTO {
     long id;
-    String description;
+    String Label;
     String colour;
 }
