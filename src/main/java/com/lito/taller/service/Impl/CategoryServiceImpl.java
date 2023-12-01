@@ -57,8 +57,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryDTO mapToDTO(Category category){
         return new CategoryDTO( category.getId(),
-                category.getDescription(),
-                category.getDescription());
+                category.getLabel(),
+                category.getColour());
     }
 
     private Category mapToEntity(CategoryDTO categoryDTO){
