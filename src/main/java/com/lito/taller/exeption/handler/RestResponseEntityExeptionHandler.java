@@ -12,11 +12,12 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class RestResponseEntityExeptionHandler {
 
+    final String CE_RESOURSE_NOT_FOUND = "RSNT_1";
     @ExceptionHandler( ResourseNotFoundExeption.class)
     public ResponseEntity<ResponseErrorDto> handlerResourseNotFoundException(
             Exception ex, WebRequest webRequest){
         ResponseErrorDto responseBody = new ResponseErrorDto(
-                ex.getMessage(), "123"
+                ex.getMessage(), CE_RESOURSE_NOT_FOUND
         ) ;
         return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
     }
