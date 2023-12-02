@@ -45,5 +45,4 @@ public class Vehicle {
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
     List<Work> works = new ArrayList<>();
 
-
 }
