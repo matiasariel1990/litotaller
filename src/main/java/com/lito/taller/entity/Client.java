@@ -1,5 +1,6 @@
 package com.lito.taller.entity;
 
+import com.lito.taller.dto.ClientDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,4 +37,6 @@ public class Client {
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     List<Work> works = new ArrayList<>();
+
+
 }

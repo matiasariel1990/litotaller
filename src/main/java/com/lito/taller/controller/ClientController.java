@@ -15,6 +15,8 @@ public interface ClientController {
 
     public Set<ClientDTO> getAllClient();
 
+    public ClientDTO getById(long Id);
+
     public ClientDTO createClient(@RequestBody ClientDTO clientDTO);
 
     public ClientDTO updateClient(@RequestBody ClientDTO clientDTO);
