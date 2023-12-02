@@ -52,4 +52,7 @@ public class Work {
     @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
     List<Note> notes = new ArrayList<>();
 
+    @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
+    List<Work_Detail> work_details = new ArrayList<>();
+
 }

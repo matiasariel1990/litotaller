@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryRepository.findById(
                 categoryDTO.getId()
         ).orElseThrow(() -> new ResourseNotFoundExeption(Category.class.getName()));
-        category.setLabel(categoryDTO.getDescription());
+        category.setLabel(categoryDTO.getLabel());
         category.setColour(categoryDTO.getColour());
         Category categorySave = categoryRepository.save(category);
         return mapToDTO(categorySave);
@@ -59,13 +59,13 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryDTO mapToDTO(Category category){
         return new CategoryDTO( category.getId(),
                 category.getLabel(),
-                category.getLabel());
+                category.getColour());
     }
 
     private Category mapToEntity(CategoryDTO categoryDTO){
 
         return new Category(categoryDTO.getId(),
-                categoryDTO.getDescription(),
+                categoryDTO.getLabel(),
                 categoryDTO.getColour());
     }
 }

@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * / categorias para los work_details de los trabajos (ej, mano de obra, repuesto, trabajo externo)
  */
@@ -24,4 +27,5 @@ public class Category {
 
     @Column(nullable = false, length = 10)
     String colour;
+
 }
