@@ -36,7 +36,7 @@ public class Vehicle {
     @Column(nullable = true, length = 200)
     String summary;
 
-
+    @JsonBackReference
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="client_id", nullable = false,
                 updatable = true, foreignKey = @ForeignKey(name = "FK_VEHICLE_CLIENT_ID"))
