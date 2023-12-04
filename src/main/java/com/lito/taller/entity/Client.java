@@ -1,10 +1,12 @@
 package com.lito.taller.entity;
 
-import com.lito.taller.dto.ClientDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +31,22 @@ public class Client {
     @Column(nullable = true, length = 255)
     String summary;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     List<Note> notes = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Vehicle> vehicles = new ArrayList<>();
+    List<Vehicle> vehicles;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Work> works = new ArrayList<>();
+    List<Work> works= new ArrayList<>();
 
-
+    public Client(long id, String name, String summary, String tel){
+        this.id = id;
+        this.name = name;
+        this.summary = summary;
+        this.tel = tel;
+    }
 }

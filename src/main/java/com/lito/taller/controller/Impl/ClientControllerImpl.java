@@ -1,7 +1,8 @@
 package com.lito.taller.controller.Impl;
 
 import com.lito.taller.controller.ClientController;
-import com.lito.taller.dto.ClientDTO;
+import com.lito.taller.dto.Client.ClientDataDTO;
+import com.lito.taller.dto.Client.ClientDTO;
 import com.lito.taller.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
@@ -27,6 +28,12 @@ public class ClientControllerImpl implements ClientController {
     @GetMapping("/{id}")
     public ClientDTO getById(long id){
         return clientService.gteById(id);
+    }
+
+    @Override
+    @GetMapping("/{id}/data")
+    public ClientDataDTO getDataById(@PathVariable long id){
+        return clientService.getDataById(id);
     }
 
     @Override

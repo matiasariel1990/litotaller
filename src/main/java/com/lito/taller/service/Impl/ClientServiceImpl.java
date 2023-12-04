@@ -1,7 +1,8 @@
 package com.lito.taller.service.Impl;
 
 
-import com.lito.taller.dto.ClientDTO;
+import com.lito.taller.dto.Client.ClientDataDTO;
+import com.lito.taller.dto.Client.ClientDTO;
 import com.lito.taller.entity.Category;
 import com.lito.taller.entity.Client;
 import com.lito.taller.exeption.ResourseNotFoundExeption;
@@ -27,18 +28,32 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Set<ClientDTO> getAllClients() {
         Set<ClientDTO> allClients = new HashSet<>();
-        allClients.addAll(clientRepository.findAll().
-                stream().map(client ->
-                { return mapToDTO(client); }).collect(Collectors.toSet())
+        allClients.addAll(
+            clientRepository
+                .findAll()
+                .stream()
+                .map(client -> { return mapToDTO(client); })
+                .collect(Collectors.toSet())
         );
         return allClients;
     }
 
     @Override
     public ClientDTO gteById(Long id) {
-        return mapToDTO(clientRepository.findById(id).
-                orElseThrow(()-> new ResourseNotFoundExeption(Category.class.getName()))
-        );
+        return mapToDTO(
+            clientRepository
+                .findById(id)
+                .orElseThrow( ()-> new ResourseNotFoundExeption(Category.class.getName()) )
+            );
+    }
+
+    @Override
+    public ClientDataDTO getDataById(long id){
+        Client client = clientRepository
+            .findById(id)
+            .orElseThrow( ()-> new ResourseNotFoundExeption(Category.class.getName()) );
+
+        return new ClientDataDTO(client);
     }
 
     @Override
@@ -70,17 +85,16 @@ public class ClientServiceImpl implements ClientService {
     }
 
     private ClientDTO mapToDTO(Client client){
-        return new ClientDTO (client.getId(), client.getName(),
-                client.getTel(), client.getSummary(),
-                client.getNotes(), client.getVehicles(),
-                client.getWorks()
+        return new ClientDTO (
+                client.getId(),     client.getName(),
+                client.getTel(),    client.getSummary()
         );
     }
 
     private Client mapToEntity(ClientDTO clientDTO){
-        return new Client (clientDTO.getId(), clientDTO.getName(),
-                clientDTO.getTel(), clientDTO.getSummary(),
-                null, null, null
+        return new Client (
+                clientDTO.getId(),      clientDTO.getName(),
+                clientDTO.getSummary(), clientDTO.getTel()
         );
     }
 }

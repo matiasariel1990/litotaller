@@ -1,4 +1,4 @@
-package com.lito.taller.dto;
+package com.lito.taller.dto.Client;
 
 import com.lito.taller.entity.Note;
 import com.lito.taller.entity.Vehicle;
@@ -18,7 +18,4 @@ public class ClientDTO {
     String name;
     String tel;
     String summary;
-    List<Note> notes;
-    List<Vehicle> vehicles;
-    List<Work> works; //confirmar que no hay que usar new (recibiria la referencia en el mapTo)
 }
