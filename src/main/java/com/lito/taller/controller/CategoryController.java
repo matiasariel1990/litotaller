@@ -1,8 +1,6 @@
 package com.lito.taller.controller;
 
 import com.lito.taller.dto.CategoryDTO;
-import com.lito.taller.entity.Category;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -16,11 +14,8 @@ public interface CategoryController {
 
     public CategoryDTO createCategory(@RequestBody CategoryDTO categoryDTO);
 
-    @PutMapping("/Category/{idCategory}")
     public CategoryDTO updateCategory(@RequestBody CategoryDTO categoryDTO);
 
-    @DeleteMapping("/Category")
-    public ResponseEntity<String> deleteCategory(@RequestBody CategoryDTO categoryDTO);
-
+    public void deleteCategory(@PathVariable long id);
 
 }

@@ -48,8 +48,9 @@ public class ClientControllerImpl implements ClientController {
     }
 
     @Override
-    @DeleteMapping("")
-    public ResponseEntity<String> deleteClient(ClientDTO clientDTO) {
-        return new ResponseEntity<>(clientDTO.getName() + "Eliminado", HttpStatusCode.valueOf(200));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteClient(@PathVariable long id) {
+        clientService.deleteClient(id);
+        return new ResponseEntity<>("OK", HttpStatusCode.valueOf(200));
     }
 }

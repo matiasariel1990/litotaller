@@ -2,7 +2,6 @@ package com.lito.taller.controller.Impl;
 
 import com.lito.taller.controller.CategoryController;
 import com.lito.taller.dto.CategoryDTO;
-import com.lito.taller.entity.Category;
 import com.lito.taller.service.CategoryService;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +30,14 @@ public class CaregoryControllerImpl implements CategoryController {
     }
 
 
-    @PutMapping("/{Id}")
-    public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
+    @PutMapping()
+    public CategoryDTO updateCategory(@RequestBody CategoryDTO categoryDTO) {
         return categoryService.updateCategory(categoryDTO);
     }
 
-
-    @DeleteMapping("{Id}")
-    public ResponseEntity<String> deleteCategory(CategoryDTO categoryDTO) {
-        return new ResponseEntity<>("OK", HttpStatusCode.valueOf(200));
+    @DeleteMapping("/{id}")
+    public void deleteCategory(@PathVariable long id) {
+        categoryService.deleteCategory(id);
+        new ResponseEntity<>("OK", HttpStatusCode.valueOf(200));
     }
 }

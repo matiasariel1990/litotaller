@@ -22,7 +22,7 @@ public interface ClientController {
 
     public ClientDTO updateClient(@RequestBody ClientDTO clientDTO);
 
-    public ResponseEntity<String> deleteClient(@RequestBody ClientDTO clientDTO);
+    public ResponseEntity<String> deleteClient(@PathVariable long id);
 
 
 }

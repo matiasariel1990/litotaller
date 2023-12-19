@@ -12,7 +12,6 @@ public interface ClientService {
 
     public ClientDataDTO getDataById(long id);
 
-
     public ClientDTO createClient(ClientDTO clientDTO);
 
     public ClientDTO updateClient(ClientDTO clientDTO);

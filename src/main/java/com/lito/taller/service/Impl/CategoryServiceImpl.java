@@ -5,6 +5,7 @@ import com.lito.taller.entity.Category;
 import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.CategoryRepository;
 import com.lito.taller.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -14,11 +15,9 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
+    @Autowired
     CategoryRepository categoryRepository;
 
-    public CategoryServiceImpl(CategoryRepository categoryRepository){
-        this.categoryRepository = categoryRepository;
-    }
     @Override
     public Set<CategoryDTO> getAllCategories() {
         Set<CategoryDTO> allCategories = new HashSet<CategoryDTO>();
