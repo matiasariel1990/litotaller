@@ -31,7 +31,7 @@ public class Client {
     @Column(nullable = true, length = 255)
     String summary;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     List<Note> notes = new ArrayList<>();
 

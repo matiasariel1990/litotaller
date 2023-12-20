@@ -32,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
             clientRepository
                 .findAll()
                 .stream()
-                .map(client -> { return mapToDTO(client); })
+                .map(client -> { return new ClientDTO(client); })
                 .collect(Collectors.toSet())
         );
         return allClients;
@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDTO gteById(Long id) {
-        return mapToDTO(
+        return new ClientDTO(
             clientRepository
                 .findById(id)
                 .orElseThrow( ()-> new ResourseNotFoundExeption(Category.class.getName()) )
@@ -58,8 +58,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDTO createClient(ClientDTO clientDTO) {
-        return mapToDTO(
-                clientRepository.save(mapToEntity(clientDTO))
+        return new ClientDTO(
+                clientRepository.save(clientDTO.mapToEntity())
         );
     }
 
@@ -72,7 +72,7 @@ public class ClientServiceImpl implements ClientService {
         client.setName(clientDTO.getName());
         client.setTel(clientDTO.getTel());
         client.setSummary(clientDTO.getSummary());
-        return mapToDTO( clientRepository.save(client));
+        return new ClientDTO( clientRepository.save(client));
     }
 
     @Override
@@ -84,17 +84,6 @@ public class ClientServiceImpl implements ClientService {
         );
     }
 
-    private ClientDTO mapToDTO(Client client){
-        return new ClientDTO (
-                client.getId(),     client.getName(),
-                client.getTel(),    client.getSummary()
-        );
-    }
 
-    private Client mapToEntity(ClientDTO clientDTO){
-        return new Client (
-                clientDTO.getId(),      clientDTO.getName(),
-                clientDTO.getSummary(), clientDTO.getTel()
-        );
-    }
+
 }

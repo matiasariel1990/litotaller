@@ -1,5 +1,6 @@
 package com.lito.taller.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class Note {
     @Column(nullable = false, length = 500)
     String content;
 
+    @JsonBackReference
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="client_id", nullable = true,
             updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_CLIENT_ID"))
