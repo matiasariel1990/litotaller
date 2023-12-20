@@ -12,43 +12,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("Client")
 public class ClientControllerImpl implements ClientController {
 
     @Autowired
     ClientService clientService;
 
     @Override
-    @GetMapping()
     public Set<ClientDTO> getAllClient() {
         return clientService.getAllClients();
     }
 
     @Override
-    @GetMapping("/{id}")
     public ClientDTO getById(long id){
         return clientService.gteById(id);
     }
-
     @Override
-    @GetMapping("/{id}/data")
     public ClientDataDTO getDataById(@PathVariable long id){
         return clientService.getDataById(id);
     }
 
     @Override
-    @PostMapping()
     public ClientDTO createClient(ClientDTO clientDTO) {
         return clientService.createClient(clientDTO);
     }
+
     @Override
-    @PutMapping()
     public ClientDTO updateClient(ClientDTO clientDTO) {
         return clientService.updateClient(clientDTO);
     }
 
     @Override
-    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable long id) {
         clientService.deleteClient(id);
         return new ResponseEntity<>("OK", HttpStatusCode.valueOf(200));
