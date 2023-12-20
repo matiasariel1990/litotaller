@@ -29,29 +29,6 @@ public class NoteServiceImpl implements NoteService {
         return null;
     }
 
-    @Override
-    public Set<NoteDTO> getClientNotes(Client client) {
-        Set<NoteDTO> clientNotes = new HashSet<>();
-        clientNotes.addAll(
-          noteRepository
-              .findByClient(client)
-              .stream()
-              .map(note -> { return mapToDto(note); })
-              .collect(Collectors.toSet())
-
-        );
-        return clientNotes;
-    }
-
-    @Override
-    public Set<NoteDTO> getVehicleNotes() {
-        return null;
-    }
-
-    @Override
-    public Set<NoteDTO> getWorkNotes() {
-        return null;
-    }
 
     @Override
     public NoteDTO createNote(NoteDTO noteDTO) {

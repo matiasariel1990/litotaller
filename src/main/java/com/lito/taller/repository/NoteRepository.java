@@ -14,5 +14,4 @@ import java.util.Set;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-    Set<Note> findByClient(Client client);
 }

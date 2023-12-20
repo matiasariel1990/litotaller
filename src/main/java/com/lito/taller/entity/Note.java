@@ -32,14 +32,15 @@ public class Note {
     String content;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name="client_id", nullable = true,
+            updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_CLIENT_ID"))
+    Client client;
+
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="vehicle_id", nullable = true,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_VEHICLE_ID"))
     Vehicle vehicle;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
-    @JoinColumn(name="client_id", nullable = true,
-                updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_CLIENT_ID"))
-    Client client;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="work_id", nullable = true,

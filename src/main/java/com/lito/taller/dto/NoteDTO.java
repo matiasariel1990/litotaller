@@ -15,5 +15,7 @@ public class NoteDTO {
     long id;
     Date date;
     String content;
-
+    Client client;
+    Vehicle Vehicle;
+    Work work;
 }

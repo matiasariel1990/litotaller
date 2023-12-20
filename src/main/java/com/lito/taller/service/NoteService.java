@@ -10,12 +10,6 @@ import java.util.Set;
 public interface NoteService {
     public Set<NoteDTO> getAllNotes();
 
-    public Set<NoteDTO> getClientNotes(Client client);
-
-    public Set<NoteDTO> getVehicleNotes();
-
-    public Set<NoteDTO> getWorkNotes();
-
     public NoteDTO createNote(NoteDTO noteDTO);
 
     public NoteDTO updateNote(NoteDTO noteDTO);
