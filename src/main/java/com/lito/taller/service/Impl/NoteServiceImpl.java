@@ -48,7 +48,8 @@ public class NoteServiceImpl implements NoteService {
     private NoteDTO mapToDto(Note note){
         return new NoteDTO(
                 note.getId(),       note.getDate(),
-                note.getContent()
+                note.getContent(),  note.getClient(),
+                note.getVehicle(),  note.getWork()
         );
     }
 
