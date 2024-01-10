@@ -2,6 +2,7 @@ package com.lito.taller.controller;
 
 
 import com.lito.taller.dto.NoteDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -13,7 +14,7 @@ public interface NoteController {
     public Set<NoteDTO> getAllNote();
 
     @PostMapping()
-    public NoteDTO createNote(@RequestBody NoteDTO noteDTO);
+    public ResponseEntity createNote(@RequestBody NoteDTO noteDTO);
 
     @PutMapping()
     public NoteDTO updateNote(@RequestBody NoteDTO noteDTO);

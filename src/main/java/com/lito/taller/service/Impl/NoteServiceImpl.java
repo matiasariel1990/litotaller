@@ -32,7 +32,11 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDTO createNote(NoteDTO noteDTO) {
-        return null;
+
+        return new NoteDTO(
+                noteRepository.save(noteDTO.mapToEntity())
+
+                );
     }
 
     @Override
