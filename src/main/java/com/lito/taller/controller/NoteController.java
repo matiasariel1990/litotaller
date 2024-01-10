@@ -13,8 +13,19 @@ public interface NoteController {
     @GetMapping()
     public Set<NoteDTO> getAllNote();
 
-    @PostMapping()
-    public ResponseEntity createNote(@RequestBody NoteDTO noteDTO);
+    @PostMapping("/client/{id}")
+    public NoteDTO createClientNote(@RequestBody String content,
+                                     @PathVariable long id);
+
+    @PostMapping("/work/{id}")
+    public NoteDTO createWorkNote(@RequestBody String content,
+                                    @PathVariable long id);
+
+    @PostMapping("/vehicle/{id}")
+    public NoteDTO createVehiclesNote(@RequestBody String content,
+                              @PathVariable long id);
+
+
 
     @PutMapping()
     public NoteDTO updateNote(@RequestBody NoteDTO noteDTO);

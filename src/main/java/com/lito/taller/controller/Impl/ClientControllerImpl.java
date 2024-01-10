@@ -24,7 +24,7 @@ public class ClientControllerImpl implements ClientController {
 
     @Override
     public ClientDTO getById(long id){
-        return clientService.gteById(id);
+        return clientService.getById(id);
     }
     @Override
     public ClientDataDTO getDataById(@PathVariable long id){

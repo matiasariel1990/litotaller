@@ -8,7 +8,7 @@ import java.util.Set;
 public interface ClientService {
     public Set<ClientDTO> getAllClients();
 
-    public ClientDTO gteById(Long id);
+    public ClientDTO getById(Long id);
 
     public ClientDataDTO getDataById(long id);
 

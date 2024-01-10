@@ -39,7 +39,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO gteById(Long id) {
+    public ClientDTO getById(Long id) {
         return new ClientDTO(
             clientRepository
                 .findById(id)

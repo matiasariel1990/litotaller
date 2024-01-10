@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-public class CaregoryControllerImpl implements CategoryController {
+public class CategoryControllerImpl implements CategoryController {
 
     @Autowired
     CategoryService categoryService;
