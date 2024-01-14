@@ -21,6 +21,9 @@ public class NoteControllerImpl implements NoteController {
     @Autowired
     NoteService noteService;
 
+    @Autowired
+    ClientNote clientNote;
+
     @Override
     public Set<NoteDTO> getAllNote() {
         return null;
@@ -41,9 +44,9 @@ public class NoteControllerImpl implements NoteController {
     @Override
     public NoteDTO createClientNote(@RequestBody String content,
                                      @PathVariable long id) {
-        NoteType noteType = new ClientNote();
+        //NoteType noteType = new ClientNote();
 
-        return noteService.createNote(content, noteType, id);
+        return noteService.createNote(content, clientNote, id);
     }
 
     @Override

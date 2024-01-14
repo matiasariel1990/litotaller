@@ -5,9 +5,11 @@ import com.lito.taller.entity.Note;
 import com.lito.taller.service.ClientService;
 import com.lito.taller.service.noteSupport.NoteType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service
 public class ClientNote implements NoteType {
 
     @Autowired
