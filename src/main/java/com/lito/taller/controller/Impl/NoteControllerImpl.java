@@ -32,12 +32,16 @@ public class NoteControllerImpl implements NoteController {
     @Override
     public NoteDTO createWorkNote(@RequestBody String content,
                                   @PathVariable long id) {
+
+        //return workService.createNote(content, workNote, id)
         return null;
     }
 
     @Override
     public NoteDTO createVehiclesNote(@RequestBody String content,
                                       @PathVariable long id) {
+
+        //return vehicleService.createNote(content, vehicleNote, id);
         return null;
     }
 

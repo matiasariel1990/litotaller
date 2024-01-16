@@ -26,7 +26,6 @@ public interface NoteController {
                               @PathVariable long id);
 
 
-
     @PutMapping()
     public NoteDTO updateNote(@RequestBody NoteDTO noteDTO);
 
