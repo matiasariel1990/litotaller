@@ -1,10 +1,11 @@
 package com.lito.taller.controller;
 
 
-import com.lito.taller.dto.NoteDTO;
-import org.springframework.http.ResponseEntity;
+import com.lito.taller.dto.Note.NoteContentDTO;
+import com.lito.taller.dto.Note.NoteDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -31,5 +32,10 @@ public interface NoteController {
 
     @DeleteMapping("/{id}")
     public void deleteNote(@PathVariable long id);
+
+    @GetMapping("/client/{id}")
+    public Set<NoteContentDTO> getClientNotes(@PathVariable long id);
+
+
 
 }

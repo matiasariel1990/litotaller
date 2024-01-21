@@ -1,20 +1,17 @@
 package com.lito.taller.service.Impl;
 
-import com.lito.taller.dto.Client.ClientDTO;
-import com.lito.taller.dto.NoteDTO;
-import com.lito.taller.entity.Client;
+import com.lito.taller.dto.Note.NoteContentDTO;
+import com.lito.taller.dto.Note.NoteDTO;
 import com.lito.taller.entity.Note;
 import com.lito.taller.repository.NoteRepository;
-import com.lito.taller.service.ClientService;
 import com.lito.taller.service.NoteService;
 import com.lito.taller.service.noteSupport.NoteType;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -56,15 +53,11 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public void deleteNote(Long id) {
-
     }
 
-    private NoteDTO mapToDto(Note note){
-        return new NoteDTO(
-                note.getId(),       note.getDate(),
-                note.getContent(),  note.getClient(),
-                note.getVehicle(),  note.getWork()
-        );
+    @Override
+    public Set<NoteContentDTO> getClientNotes(long id){
+        return noteRepository.findByClientId(id);
     }
 
 }

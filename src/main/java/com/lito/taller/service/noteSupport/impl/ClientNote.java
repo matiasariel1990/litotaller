@@ -17,7 +17,7 @@ public class ClientNote implements NoteType {
 
     @Override
     public Note createNote(long id) {
-        ClientDTO clientDTO = clientService.getById( id );
+        ClientDTO clientDTO = this.clientService.getById( id );
 
         Note note  = new Note();
         note.setClient(clientDTO.mapToEntity());

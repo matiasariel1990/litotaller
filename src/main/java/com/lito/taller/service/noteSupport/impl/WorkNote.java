@@ -12,7 +12,7 @@ public class WorkNote implements NoteType {
 
     @Override
     public Note createNote(long id) {
-        //WorkDTO workDTO = workService.getById(id);
+        //WorkDTO workDTO = this.workService.getById(id);
 
         Note note = new Note();
         //note.setWork(workDTO.mapToEntity());

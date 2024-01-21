@@ -1,4 +1,4 @@
-package com.lito.taller.dto;
+package com.lito.taller.dto.Note;
 
 import com.lito.taller.entity.Client;
 import com.lito.taller.entity.Note;

@@ -2,17 +2,17 @@ package com.lito.taller.controller.Impl;
 
 
 import com.lito.taller.controller.NoteController;
-import com.lito.taller.dto.NoteDTO;
+import com.lito.taller.dto.Note.NoteContentDTO;
+import com.lito.taller.dto.Note.NoteDTO;
 import com.lito.taller.service.NoteService;
-import com.lito.taller.service.noteSupport.NoteType;
 import com.lito.taller.service.noteSupport.impl.ClientNote;
+import com.lito.taller.service.noteSupport.impl.VehicleNote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -24,6 +24,9 @@ public class NoteControllerImpl implements NoteController {
     @Autowired
     ClientNote clientNote;
 
+    @Autowired
+    VehicleNote vehicleNote;
+
     @Override
     public Set<NoteDTO> getAllNote() {
         return null;
@@ -33,7 +36,7 @@ public class NoteControllerImpl implements NoteController {
     public NoteDTO createWorkNote(@RequestBody String content,
                                   @PathVariable long id) {
 
-        //return workService.createNote(content, workNote, id)
+        //return this.workService.createNote(content, this.workNote, id)
         return null;
     }
 
@@ -41,8 +44,8 @@ public class NoteControllerImpl implements NoteController {
     public NoteDTO createVehiclesNote(@RequestBody String content,
                                       @PathVariable long id) {
 
-        //return vehicleService.createNote(content, vehicleNote, id);
-        return null;
+        return this.noteService.createNote(content, this.vehicleNote, id);
+
     }
 
     @Override
@@ -50,7 +53,7 @@ public class NoteControllerImpl implements NoteController {
                                      @PathVariable long id) {
         //NoteType noteType = new ClientNote();
 
-        return noteService.createNote(content, clientNote, id);
+        return this.noteService.createNote(content, this.clientNote, id);
     }
 
     @Override
@@ -62,4 +65,7 @@ public class NoteControllerImpl implements NoteController {
     public void deleteNote(long id) {
 
     }
+
+    @Override
+    public Set<NoteContentDTO> getClientNotes(long id){ return noteService.getClientNotes(id); }
 }
