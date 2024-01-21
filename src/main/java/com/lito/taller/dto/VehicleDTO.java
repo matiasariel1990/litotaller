@@ -2,6 +2,8 @@ package com.lito.taller.dto;
 
 
 
+import com.lito.taller.dto.Client.ClientDTO;
+import com.lito.taller.entity.Client;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +28,5 @@ public class VehicleDTO {
 
     String summary;
 
+    ClientDTO clientDTO;
 }
