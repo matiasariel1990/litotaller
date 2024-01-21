@@ -11,9 +11,9 @@ public interface VehicleService {
 
     public VehicleDTO getById(Long id);
 
-    public VehicleDTO createVehicle(VehicleDTO clientDTO);
+    public VehicleDTO createVehicle(VehicleDTO vehicleDTO);
 
-    public VehicleDTO updateVehicle(VehicleDTO clientDTO);
+    public VehicleDTO updateVehicle(VehicleDTO vehicleDTO);
 
     public void deleteVehicle(Long id);
 
