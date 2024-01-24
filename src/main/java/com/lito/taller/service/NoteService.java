@@ -4,7 +4,6 @@ import com.lito.taller.dto.Note.NoteContentDTO;
 import com.lito.taller.dto.Note.NoteDTO;
 import com.lito.taller.service.noteSupport.NoteType;
 
-import java.util.List;
 import java.util.Set;
 
 public interface NoteService {
@@ -12,12 +11,15 @@ public interface NoteService {
 
     public NoteDTO createNote(String content, NoteType noteType, long id);
 
-    public NoteDTO updateNote(NoteDTO noteDTO);
+    public NoteDTO updateNote(NoteContentDTO noteContentDTO);
 
     public void deleteNote(Long id);
 
-
     public Set<NoteContentDTO> getClientNotes(long id);
+
+    public Set<NoteContentDTO> getVehicleNotes(long id);
+
+    public Set<NoteContentDTO> getWorkNotes(long id);
 
 
 }

@@ -13,7 +13,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table
 public class Client {
@@ -31,17 +30,17 @@ public class Client {
     @Column(nullable = true, length = 255)
     String summary;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Note> notes = new ArrayList<>();
+    //@JsonManagedReference
+    //@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    //List<Note> notes = new ArrayList<>();
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Vehicle> vehicles;
+    //@JsonManagedReference
+    //@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    //List<Vehicle> vehicles;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Work> works= new ArrayList<>();
+    //@JsonIgnore
+    //@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    //List<Work> works= new ArrayList<>();
 
     public Client(long id, String name, String summary, String tel){
         this.id = id;

@@ -30,5 +30,4 @@ public interface ClientController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable long id);
 
-
 }

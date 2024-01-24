@@ -19,31 +19,31 @@ public class ClientControllerImpl implements ClientController {
 
     @Override
     public Set<ClientDTO> getAllClient() {
-        return clientService.getAllClients();
+        return this.clientService.getAllClients();
     }
 
     @Override
     public ClientDTO getById(long id){
-        return clientService.getById(id);
+        return this.clientService.getById(id);
     }
     @Override
     public ClientDataDTO getDataById(@PathVariable long id){
-        return clientService.getDataById(id);
+        return this.clientService.getDataById(id);
     }
 
     @Override
     public ClientDTO createClient(ClientDTO clientDTO) {
-        return clientService.createClient(clientDTO);
+        return this.clientService.createClient(clientDTO);
     }
 
     @Override
     public ClientDTO updateClient(ClientDTO clientDTO) {
-        return clientService.updateClient(clientDTO);
+        return this.clientService.updateClient(clientDTO);
     }
 
     @Override
     public ResponseEntity<String> deleteClient(@PathVariable long id) {
-        clientService.deleteClient(id);
+        this.clientService.deleteClient(id);
         return new ResponseEntity<>("OK", HttpStatusCode.valueOf(200));
     }
 }

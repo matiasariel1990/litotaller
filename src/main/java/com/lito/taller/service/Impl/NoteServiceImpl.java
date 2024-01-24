@@ -3,6 +3,7 @@ package com.lito.taller.service.Impl;
 import com.lito.taller.dto.Note.NoteContentDTO;
 import com.lito.taller.dto.Note.NoteDTO;
 import com.lito.taller.entity.Note;
+import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.NoteRepository;
 import com.lito.taller.service.NoteService;
 import com.lito.taller.service.noteSupport.NoteType;
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @Service
 public class NoteServiceImpl implements NoteService {
@@ -21,17 +22,18 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     NoteRepository noteRepository;
 
-
-
-    public NoteServiceImpl(NoteRepository noteRepository){
-        this.noteRepository = noteRepository;
-    }
-
     @Override
     public Set<NoteDTO> getAllNotes() {
-        return null;
+        Set<NoteDTO> allNotes = new HashSet<>();
+        allNotes.addAll(
+                this.noteRepository
+                        .findAll()
+                        .stream()
+                        .map(note -> { return new NoteDTO(note); })
+                        .collect(Collectors.toSet())
+        );
+        return allNotes;
     }
-
 
     @Override
     public NoteDTO createNote(String content, NoteType noteType, long id) {
@@ -45,19 +47,64 @@ public class NoteServiceImpl implements NoteService {
         );
     }
 
-
     @Override
-    public NoteDTO updateNote(NoteDTO noteDTO) {
-        return null;
+    public NoteDTO updateNote(NoteContentDTO noteContentDTO) {
+
+        Note note = this.noteRepository.findById(
+                noteContentDTO.getId()
+        ).
+        orElseThrow( () -> new ResourseNotFoundExeption(Note.class.getName()) );
+        note.setContent(noteContentDTO.getContent());
+        return new NoteDTO( this.noteRepository.save(note) );
     }
 
     @Override
     public void deleteNote(Long id) {
+        this.noteRepository.deleteById(
+                (this.noteRepository.findById(id)
+                        .orElseThrow(
+                                () -> new ResourseNotFoundExeption( Note.class.getName() )
+                        )
+                        .getId())
+        );
     }
 
     @Override
     public Set<NoteContentDTO> getClientNotes(long id){
-        return noteRepository.findByClientId(id);
+        Set<NoteContentDTO> allClientNotes = new HashSet<>();
+        allClientNotes.addAll(
+            this.noteRepository
+                .findByClientId(id)
+                    .stream()
+                    .collect(Collectors.toSet())
+        );
+        return allClientNotes;
+
+        //return this.noteRepository.findByClientId(id);
+    }
+
+    @Override
+    public Set<NoteContentDTO> getVehicleNotes(long id) {
+        Set<NoteContentDTO> allVehicleNotes = new HashSet<>();
+        allVehicleNotes.addAll(
+                this.noteRepository
+                        .findByVehicleId(id)
+                        .stream()
+                        .collect(Collectors.toSet())
+        );
+        return allVehicleNotes;
+    }
+
+    @Override
+    public Set<NoteContentDTO> getWorkNotes(long id) {
+        Set<NoteContentDTO> allWorkNotes = new HashSet<>();
+        allWorkNotes.addAll(
+                this.noteRepository
+                        .findByWorkId(id)
+                        .stream()
+                        .collect(Collectors.toSet())
+        );
+        return allWorkNotes;
     }
 
 }

@@ -3,7 +3,6 @@ package com.lito.taller.service.Impl;
 
 import com.lito.taller.dto.Client.ClientDataDTO;
 import com.lito.taller.dto.Client.ClientDTO;
-import com.lito.taller.entity.Category;
 import com.lito.taller.entity.Client;
 import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.ClientRepository;
@@ -29,7 +28,7 @@ public class ClientServiceImpl implements ClientService {
     public Set<ClientDTO> getAllClients() {
         Set<ClientDTO> allClients = new HashSet<>();
         allClients.addAll(
-            clientRepository
+            this.clientRepository
                 .findAll()
                 .stream()
                 .map(client -> { return new ClientDTO(client); })
@@ -41,17 +40,17 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDTO getById(Long id) {
         return new ClientDTO(
-            clientRepository
+            this.clientRepository
                 .findById(id)
-                .orElseThrow( ()-> new ResourseNotFoundExeption(Category.class.getName()) )
+                .orElseThrow( ()-> new ResourseNotFoundExeption(Client.class.getName()) )
             );
     }
 
     @Override
     public ClientDataDTO getDataById(long id){
-        Client client = clientRepository
+        Client client = this.clientRepository
             .findById(id)
-            .orElseThrow( ()-> new ResourseNotFoundExeption(Category.class.getName()) );
+            .orElseThrow( ()-> new ResourseNotFoundExeption(Client.class.getName()) );
 
         return new ClientDataDTO(client);
     }
@@ -59,28 +58,30 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDTO createClient(ClientDTO clientDTO) {
         return new ClientDTO(
-                clientRepository.save(clientDTO.mapToEntity())
+                this.clientRepository.save(clientDTO.mapToEntity())
         );
     }
 
     @Override
     public ClientDTO updateClient(ClientDTO clientDTO) {
-        Client client = clientRepository.findById(
+        Client client = this.clientRepository.findById(
                 clientDTO.getId()
         ).
         orElseThrow( () -> new ResourseNotFoundExeption(Client.class.getName()));
         client.setName(clientDTO.getName());
         client.setTel(clientDTO.getTel());
         client.setSummary(clientDTO.getSummary());
-        return new ClientDTO( clientRepository.save(client));
+        return new ClientDTO( this.clientRepository.save(client));
     }
 
     @Override
     public void deleteClient(Long id) {
-        clientRepository.deleteById(
-                (clientRepository.findById(id).
-                orElseThrow(() -> new ResourseNotFoundExeption(Category.class.getName()))
-                .getId())
+        this.clientRepository.deleteById(
+                (this.clientRepository.findById(id)
+                        .orElseThrow(
+                                () -> new ResourseNotFoundExeption (Client.class.getName() )
+                        )
+                        .getId())
         );
     }
 

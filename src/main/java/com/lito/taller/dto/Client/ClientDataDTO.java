@@ -28,8 +28,8 @@ public class ClientDataDTO {
         this.name = client.getName();
         this.tel = client.getTel();
         this.summary = client.getSummary();
-        this.notes = client.getNotes();
-        this.vehicles = client.getVehicles();
-        this.works = client.getWorks();
+        //this.notes = client.getNotes();
+        //this.vehicles = client.getVehicles();
+        //this.works = client.getWorks();
     }
 }

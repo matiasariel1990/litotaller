@@ -39,6 +39,7 @@ public class Work {
     @Temporal(TemporalType.TIMESTAMP)
     Date date_pickup;
 
+
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name="vehicle_id", nullable = false,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_VEHICLE_ID"))
