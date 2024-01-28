@@ -50,10 +50,10 @@ public class Work {
                 updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_CLIENT_ID"))
     Client client;
 
-    @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
-    List<Note> notes = new ArrayList<>();
+    //@OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
+    //List<Note> notes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
-    List<Work_Detail> work_details = new ArrayList<>();
+    //@OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
+    //List<Work_Detail> work_details = new ArrayList<>();
 
 }

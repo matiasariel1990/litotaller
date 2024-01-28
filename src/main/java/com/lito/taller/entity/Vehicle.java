@@ -43,11 +43,11 @@ public class Vehicle {
     Client client;
 
 
-    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
-    List<Note> notes = new ArrayList<>();
+    //@OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
+    //List<Note> notes = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
-    List<Work> works = new ArrayList<>();
+    //@OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
+    //List<Work> works = new ArrayList<>();
 
 }

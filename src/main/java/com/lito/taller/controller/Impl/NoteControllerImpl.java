@@ -53,8 +53,8 @@ public class NoteControllerImpl implements NoteController {
     }
 
     @Override
-    public NoteDTO updateNote(@RequestBody NoteContentDTO noteContentDTO) {
-        return this.noteService.updateNote(noteContentDTO);
+    public NoteDTO updateNote(@PathVariable long id, @RequestBody String content) {
+        return this.noteService.updateNote(id, content);
     }
 
     @Override

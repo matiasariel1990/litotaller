@@ -23,8 +23,8 @@ public interface NoteController {
     public NoteDTO createVehiclesNote(@RequestBody String content,
                               @PathVariable long id);
 
-    @PutMapping()
-    public NoteDTO updateNote(@RequestBody NoteContentDTO noteContentDTO);
+    @PutMapping("/{id}")
+    public NoteDTO updateNote(@PathVariable long id, @RequestBody String content);
 
     @DeleteMapping("/{id}")
     public void deleteNote(@PathVariable long id);

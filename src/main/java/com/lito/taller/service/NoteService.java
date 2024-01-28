@@ -11,7 +11,7 @@ public interface NoteService {
 
     public NoteDTO createNote(String content, NoteType noteType, long id);
 
-    public NoteDTO updateNote(NoteContentDTO noteContentDTO);
+    public NoteDTO updateNote(long id, String content);
 
     public void deleteNote(Long id);
 

@@ -48,13 +48,12 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public NoteDTO updateNote(NoteContentDTO noteContentDTO) {
+    public NoteDTO updateNote(long id, String content) {
 
-        Note note = this.noteRepository.findById(
-                noteContentDTO.getId()
-        ).
-        orElseThrow( () -> new ResourseNotFoundExeption(Note.class.getName()) );
-        note.setContent(noteContentDTO.getContent());
+        Note note = this.noteRepository.findById(id)
+        .orElseThrow( () -> new ResourseNotFoundExeption(Note.class.getName()) );
+
+        note.setContent(content);
         return new NoteDTO( this.noteRepository.save(note) );
     }
 
