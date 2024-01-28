@@ -1,7 +1,7 @@
 package com.lito.taller.controller;
 
-import com.lito.taller.dto.Note.NoteContentDTO;
-import com.lito.taller.dto.Note.NoteDTO;
+import com.lito.taller.dto.note.NoteContentDTO;
+import com.lito.taller.dto.note.NoteDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;

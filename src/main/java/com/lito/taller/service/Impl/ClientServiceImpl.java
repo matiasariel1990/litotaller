@@ -1,8 +1,8 @@
 package com.lito.taller.service.Impl;
 
 
-import com.lito.taller.dto.Client.ClientDataDTO;
-import com.lito.taller.dto.Client.ClientDTO;
+import com.lito.taller.dto.client.ClientDataDTO;
+import com.lito.taller.dto.client.ClientDTO;
 import com.lito.taller.entity.Client;
 import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.ClientRepository;

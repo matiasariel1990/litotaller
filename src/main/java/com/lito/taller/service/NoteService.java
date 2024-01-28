@@ -1,7 +1,7 @@
 package com.lito.taller.service;
 
-import com.lito.taller.dto.Note.NoteContentDTO;
-import com.lito.taller.dto.Note.NoteDTO;
+import com.lito.taller.dto.note.NoteContentDTO;
+import com.lito.taller.dto.note.NoteDTO;
 import com.lito.taller.service.noteSupport.NoteType;
 
 import java.util.Set;

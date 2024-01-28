@@ -1,8 +1,8 @@
 package com.lito.taller.controller.Impl;
 
 import com.lito.taller.controller.NoteController;
-import com.lito.taller.dto.Note.NoteContentDTO;
-import com.lito.taller.dto.Note.NoteDTO;
+import com.lito.taller.dto.note.NoteContentDTO;
+import com.lito.taller.dto.note.NoteDTO;
 import com.lito.taller.service.NoteService;
 import com.lito.taller.service.noteSupport.impl.ClientNote;
 import com.lito.taller.service.noteSupport.impl.VehicleNote;

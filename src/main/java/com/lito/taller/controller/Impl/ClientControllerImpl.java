@@ -1,8 +1,8 @@
 package com.lito.taller.controller.Impl;
 
 import com.lito.taller.controller.ClientController;
-import com.lito.taller.dto.Client.ClientDataDTO;
-import com.lito.taller.dto.Client.ClientDTO;
+import com.lito.taller.dto.client.ClientDataDTO;
+import com.lito.taller.dto.client.ClientDTO;
 import com.lito.taller.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;

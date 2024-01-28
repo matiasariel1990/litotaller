@@ -1,8 +1,8 @@
 package com.lito.taller.controller;
 
 
-import com.lito.taller.dto.Client.ClientDataDTO;
-import com.lito.taller.dto.Client.ClientDTO;
+import com.lito.taller.dto.client.ClientDataDTO;
+import com.lito.taller.dto.client.ClientDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

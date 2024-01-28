@@ -23,17 +23,14 @@ public class Work {
     @Column(nullable = false, length = 500)
     String summary;
 
+    @Column(nullable = false, length = 20)
+    String status;
+
+
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     Date date_reception;
 
-    @Column(nullable = true)
-    @Temporal(TemporalType.DATE)
-    Date date_start;
-
-    @Column(nullable = true)
-    @Temporal(TemporalType.DATE)
-    Date date_finish;
 
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,7 +1,7 @@
 package com.lito.taller.service;
 
-import com.lito.taller.dto.Client.ClientDataDTO;
-import com.lito.taller.dto.Client.ClientDTO;
+import com.lito.taller.dto.client.ClientDataDTO;
+import com.lito.taller.dto.client.ClientDTO;
 
 import java.util.Set;
 

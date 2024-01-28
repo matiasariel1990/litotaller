@@ -1,4 +1,4 @@
-package com.lito.taller.dto.Note;
+package com.lito.taller.dto.note;
 
 
 import java.util.Date;

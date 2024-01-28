@@ -1,7 +1,7 @@
 package com.lito.taller.service.Impl;
 
-import com.lito.taller.dto.Note.NoteContentDTO;
-import com.lito.taller.dto.Note.NoteDTO;
+import com.lito.taller.dto.note.NoteContentDTO;
+import com.lito.taller.dto.note.NoteDTO;
 import com.lito.taller.entity.Note;
 import com.lito.taller.exeption.ResourseNotFoundExeption;
 import com.lito.taller.repository.NoteRepository;

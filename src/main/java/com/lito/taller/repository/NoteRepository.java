@@ -1,6 +1,6 @@
 package com.lito.taller.repository;
 
-import com.lito.taller.dto.Note.NoteContentDTO;
+import com.lito.taller.dto.note.NoteContentDTO;
 import com.lito.taller.entity.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
