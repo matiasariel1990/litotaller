@@ -24,17 +24,17 @@ public class Work {
     String summary;
 
     @Column(nullable = false, length = 20)
-    String status;
+    int status;
 
 
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
-    Date date_reception;
+    Date dateReception;
 
 
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
-    Date date_pickup;
+    Date datePickup;
 
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)

@@ -13,8 +13,8 @@ public class WorkDTO {
 
     long id;
     String summary;
-    Date date_reception;
-    Date date_pickup;
+    Date dateReception;
+    Date datePickup;
 
 
 }

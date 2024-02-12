@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface WorkService {
 
-    public WorkDTO createWork(long vehicleId, WorkDTO workDTO);
+    public WorkDataDTO createWork(long vehicleId, WorkDTO workDTO);
 
     public WorkDTO updateWork(WorkDTO workDTO);
 
@@ -16,7 +16,7 @@ public interface WorkService {
 
     public Set<WorkDataDTO> getByClientId(long id);
 
-    public void changeStatus(long id, WorkStatusRepository status);
+    public void changeStatus(long id, String status);
 
 
 

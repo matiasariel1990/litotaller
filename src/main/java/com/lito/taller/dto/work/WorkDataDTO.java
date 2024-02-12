@@ -1,5 +1,7 @@
 package com.lito.taller.dto.work;
 
+import com.lito.taller.entity.Client;
+import com.lito.taller.entity.Vehicle;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,10 +15,10 @@ import java.util.Date;
 public class WorkDataDTO {
     long id;
     String summary;
-    String status;
-    Date date_reception;
-    Date date_pickaup;
-
-    Entity entity;
+    int status;
+    Date dateReception;
+    Date datePickaup;
+    Vehicle vehicle;
+    Client client;
 
 }

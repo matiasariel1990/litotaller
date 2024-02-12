@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumSet;
 
 
-@Repository
+
 
 public enum WorkStatusRepository {
     WAITING(1, "QUEUED,STARTED"),
@@ -28,6 +29,10 @@ public enum WorkStatusRepository {
         this.changeAuthFilter = new ArrayList<String>(Arrays.asList(changeAuthFilter.split(",")));
     }
 
+    public boolean authorize(WorkStatusRepository statusTo){
+        return this.changeAuthFilter.contains(statusTo.toString());
+
+    }
 
 
 }
