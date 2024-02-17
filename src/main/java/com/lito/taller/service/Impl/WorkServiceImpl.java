@@ -5,9 +5,10 @@ import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
 import com.lito.taller.entity.Vehicle;
 import com.lito.taller.entity.Work;
+import com.lito.taller.repository.ClientRepository;
+import com.lito.taller.repository.VehicleRepository;
 import com.lito.taller.repository.WorkRepository;
-import com.lito.taller.repository.WorkStatusRepository;
-import com.lito.taller.service.VehicleService;
+import com.lito.taller.entity.enums.WorkStatusEnum;
 import com.lito.taller.service.WorkService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -26,17 +27,20 @@ public class WorkServiceImpl implements WorkService {
 
 
     @Autowired
-    VehicleService vehicleService;
+    VehicleRepository vehicleRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @Override
     public WorkDataDTO createWork(long vehicleId, WorkDTO workDTO) {
 
-        VehicleDTO vehicleDTO = vehicleService.getById(vehicleId);
+        Vehicle vehicle = vehicleRepository.getById(vehicleId);
 
         Work work = mapToEntity(workDTO);
-        work.setVehicle(mapToVehicleEntity(vehicleDTO));
+        work.setVehicle(vehicle);
         work.setClient(work.getVehicle().getClient());
-        work.setStatus(WorkStatusRepository.WAITING.ordinal());
+        work.setStatus(WorkStatusEnum.WAITING);
         workRepository.save(work);
 
         return mapToDataDTO(work);
@@ -62,15 +66,7 @@ public class WorkServiceImpl implements WorkService {
 
     }
 
-    private Vehicle mapToVehicleEntity(VehicleDTO vehicleDTO) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setId(vehicleDTO.getId());
-        vehicle.setYear(vehicleDTO.getYear());
-        vehicle.setBrand(vehicleDTO.getBrand());
-        vehicle.setModel(vehicleDTO.getModel());
-        vehicle.setCar_number(vehicleDTO.getCar_number());
-        return vehicle;
-    }
+
 
     private Work mapToEntity(WorkDTO workDTO){
         Work work = new Work();
@@ -87,8 +83,8 @@ public class WorkServiceImpl implements WorkService {
         workDataDTO.setStatus(work.getStatus());
         workDataDTO.setDateReception(work.getDateReception());
         workDataDTO.setDatePickaup(work.getDatePickup());
-        workDataDTO.setVehicle(work.getVehicle());
-        workDataDTO.setClient(work.getClient());
+        //workDataDTO.setVehicle(work.getVehicle());
+        //workDataDTO.setClient(work.getClient());
 
         return workDataDTO;
     }

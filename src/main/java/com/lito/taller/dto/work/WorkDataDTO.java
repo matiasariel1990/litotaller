@@ -2,6 +2,7 @@ package com.lito.taller.dto.work;
 
 import com.lito.taller.entity.Client;
 import com.lito.taller.entity.Vehicle;
+import com.lito.taller.entity.enums.WorkStatusEnum;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,7 @@ import java.util.Date;
 public class WorkDataDTO {
     long id;
     String summary;
-    int status;
+    WorkStatusEnum status;
     Date dateReception;
     Date datePickaup;
     Vehicle vehicle;

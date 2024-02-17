@@ -1,13 +1,12 @@
 package com.lito.taller.entity;
 
+import com.lito.taller.entity.enums.WorkStatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,8 +22,9 @@ public class Work {
     @Column(nullable = false, length = 500)
     String summary;
 
-    @Column(nullable = false, length = 20)
-    int status;
+    //@Column(nullable = false, length = 20)
+    @Enumerated(EnumType.ORDINAL)
+    WorkStatusEnum status;
 
 
     @Column(nullable = true)

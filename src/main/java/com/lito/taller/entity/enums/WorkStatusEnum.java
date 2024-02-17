@@ -1,17 +1,12 @@
-package com.lito.taller.repository;
+package com.lito.taller.entity.enums;
 
 import lombok.Getter;
-import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 
 
-
-
-public enum WorkStatusRepository {
+public enum WorkStatusEnum {
     WAITING(1, "QUEUED,STARTED"),
     QUEUED(2, "WAITING,STARTED"),
     STARTED(3, "QUEDED,PAUSED,COMPLETED"),
@@ -24,12 +19,12 @@ public enum WorkStatusRepository {
     @Getter
     final ArrayList<String> changeAuthFilter;
 
-    private WorkStatusRepository(int id, String changeAuthFilter){
+    private WorkStatusEnum(int id, String changeAuthFilter){
         this.id = id;
         this.changeAuthFilter = new ArrayList<String>(Arrays.asList(changeAuthFilter.split(",")));
     }
 
-    public boolean authorize(WorkStatusRepository statusTo){
+    public boolean authorize(WorkStatusEnum statusTo){
         return this.changeAuthFilter.contains(statusTo.toString());
 
     }
