@@ -37,12 +37,12 @@ public class Work {
     Date datePickup;
 
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="vehicle_id", nullable = false,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_VEHICLE_ID"))
     Vehicle vehicle;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="client_id", nullable = false,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_CLIENT_ID"))
     Client client;

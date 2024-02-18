@@ -2,6 +2,7 @@ package com.lito.taller.service;
 
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.exeption.InvalidStatusException;
 
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public interface WorkService {
 
     public Set<WorkDataDTO> getByClientId(long id);
 
-    public void changeStatus(long id, String status);
+    public WorkDataDTO changeStatus(long id, String status) throws InvalidStatusException;
 
 
 

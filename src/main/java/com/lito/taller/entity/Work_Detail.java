@@ -32,12 +32,12 @@ public class Work_Detail {
     @Column(nullable = false)
     boolean debit;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name="category_id", nullable = true,
             updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_DETAIL_CATEGORY_ID"))
     Category category;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="work_id", nullable = false,
             updatable = false, foreignKey = @ForeignKey(name = "FK_WORK_DETAIL_WORK_ID"))
     Work work;

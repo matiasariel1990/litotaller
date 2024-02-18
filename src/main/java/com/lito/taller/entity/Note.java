@@ -33,18 +33,18 @@ public class Note {
     String content;
 
     @JsonBackReference
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name="client_id", nullable = true,
             updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_CLIENT_ID"))
     Client client;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name="vehicle_id", nullable = true,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_VEHICLE_ID"))
     Vehicle vehicle;
 
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name="work_id", nullable = true,
                 updatable = false, foreignKey = @ForeignKey(name = "FK_NOTE_WORK_ID"))
     Work work;

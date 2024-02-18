@@ -10,11 +10,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkDTO {
-
     long id;
     String summary;
     Date dateReception;
     Date datePickup;
-
 
 }

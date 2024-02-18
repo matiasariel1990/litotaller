@@ -2,6 +2,7 @@ package com.lito.taller.controller;
 
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.exeption.InvalidStatusException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -26,7 +27,7 @@ public interface WorkController {
     public Set<WorkDataDTO> getByClientId(@PathVariable long id);
 
     @PutMapping("/{id}/{status}")
-    public void updateWorkStatus(@PathVariable long id, @PathVariable String status);
+    public WorkDataDTO updateWorkStatus(@PathVariable long id, @PathVariable String status) throws InvalidStatusException;
 
 
 }

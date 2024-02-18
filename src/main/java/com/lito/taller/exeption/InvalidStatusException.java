@@ -1,10 +1,14 @@
 package com.lito.taller.exeption;
 
-public class InvalidStatusException {
+import com.lito.taller.entity.enums.WorkStatusEnum;
+import lombok.Data;
+
+@Data
+public class InvalidStatusException extends RuntimeException {
 
     String message;
 
-    public InvalidStatusException(String statusFrom, String statusTo){
+    public InvalidStatusException(WorkStatusEnum statusFrom, WorkStatusEnum statusTo){
         message = "Invalid status change from " + statusFrom + " to " + statusTo;
     }
 

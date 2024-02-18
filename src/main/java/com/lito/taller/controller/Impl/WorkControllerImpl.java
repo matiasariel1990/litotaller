@@ -3,6 +3,7 @@ package com.lito.taller.controller.Impl;
 import com.lito.taller.controller.WorkController;
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.exeption.InvalidStatusException;
 import com.lito.taller.service.VehicleService;
 import com.lito.taller.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class WorkControllerImpl implements WorkController {
     }
 
     @Override
-    public void updateWorkStatus(long id, String status) {
-
+    public WorkDataDTO updateWorkStatus(long id, String status){
+            return workService.changeStatus(id, status.toUpperCase());
     }
 }

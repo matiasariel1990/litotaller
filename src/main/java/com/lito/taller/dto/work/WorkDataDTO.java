@@ -1,5 +1,7 @@
 package com.lito.taller.dto.work;
 
+import com.lito.taller.dto.VehicleDTO;
+import com.lito.taller.dto.client.ClientDTO;
 import com.lito.taller.entity.Client;
 import com.lito.taller.entity.Vehicle;
 import com.lito.taller.entity.enums.WorkStatusEnum;
@@ -18,8 +20,8 @@ public class WorkDataDTO {
     String summary;
     WorkStatusEnum status;
     Date dateReception;
-    Date datePickaup;
-    Vehicle vehicle;
-    Client client;
+    Date datePickup;
+    VehicleDTO vehicleDTO;
+    ClientDTO clientDTO;
 
 }
