@@ -2,6 +2,7 @@ package com.lito.taller.controller;
 
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.entity.enums.WorkStatusEnum;
 import com.lito.taller.exeption.InvalidStatusException;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,8 @@ public interface WorkController {
                               @RequestBody WorkDTO workDTO);
 
 
-    @PutMapping("/{Id}")
-    public WorkDTO updateWork(@PathVariable  long Id,
-                              @RequestBody WorkDTO workDTO);
+    @PutMapping("")
+    public WorkDTO updateWork(@RequestBody WorkDTO workDTO);
 
     @GetMapping("/vehicle/{id}")
     public Set<WorkDataDTO> getByVehicleId(@PathVariable long id);
@@ -27,7 +27,7 @@ public interface WorkController {
     public Set<WorkDataDTO> getByClientId(@PathVariable long id);
 
     @PutMapping("/{id}/{status}")
-    public WorkDataDTO updateWorkStatus(@PathVariable long id, @PathVariable String status) throws InvalidStatusException;
+    public WorkDataDTO updateWorkStatus(@PathVariable long id, @PathVariable WorkStatusEnum status) throws InvalidStatusException;
 
 
 }

@@ -2,6 +2,7 @@ package com.lito.taller.service;
 
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.entity.enums.WorkStatusEnum;
 import com.lito.taller.exeption.InvalidStatusException;
 
 import java.util.Set;
@@ -16,7 +17,7 @@ public interface WorkService {
 
     public Set<WorkDataDTO> getByClientId(long id);
 
-    public WorkDataDTO changeStatus(long id, String status) throws InvalidStatusException;
+    public WorkDataDTO changeStatus(long id, WorkStatusEnum status) throws InvalidStatusException;
 
 
 

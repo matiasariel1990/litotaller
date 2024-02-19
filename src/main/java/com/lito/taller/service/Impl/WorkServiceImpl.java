@@ -5,6 +5,7 @@ import com.lito.taller.dto.VehicleDTO;
 import com.lito.taller.dto.client.ClientDTO;
 import com.lito.taller.dto.work.WorkDTO;
 import com.lito.taller.dto.work.WorkDataDTO;
+import com.lito.taller.entity.Client;
 import com.lito.taller.entity.Vehicle;
 import com.lito.taller.entity.Work;
 import com.lito.taller.exeption.InvalidStatusException;
@@ -51,31 +52,39 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public WorkDTO updateWork(WorkDTO workDTO) {
-        return null;
+        Work work = this.workRepository.findById(
+                workDTO.getId()
+        ).
+        orElseThrow( () -> new ResourseNotFoundExeption(Work.class.getName()));
+        work.setSummary(workDTO.getSummary());
+        work.setDateReception(workDTO.getDateReception());
+        work.setDateReception(workDTO.getDateReception());
+
+        return mapToDTO( this.workRepository.save(work) );
     }
 
     @Override
     public Set<WorkDataDTO> getByVehicleId(long id) {
-        return null;
+        System.out.println("service");
+        return this.workRepository.findByVehicleId(id);
     }
 
     @Override
     public Set<WorkDataDTO> getByClientId(long id) {
-        return null;
+
+        return this.workRepository.findByClientId(id);
     }
 
     @Override
-    public WorkDataDTO changeStatus(long id, String status) {
+    public WorkDataDTO changeStatus(long id, WorkStatusEnum workStatusTo) {
         Work work =  this.workRepository
                 .findById(id)
                 .orElseThrow( () -> new ResourseNotFoundExeption(Work.class.getName()));
 
-        WorkStatusEnum workStatusTo = WorkStatusEnum.valueOf(status);
-        WorkStatusEnum workStatusFrom = work.getStatus();
 
-        if(workStatusFrom.authorize(workStatusTo)){
+        if(work.getStatus().authorize(workStatusTo)){
             work.setStatus(workStatusTo);
-        }
+        } // aca va el else que dispara la exception cuando este desarrollado el ExceptionController
 
         return mapToDataDTO(this.workRepository.save(work));
 
@@ -88,6 +97,15 @@ public class WorkServiceImpl implements WorkService {
         work.setDateReception(workDTO.getDateReception());
         work.setDateReception(workDTO.getDatePickup());
         return work;
+    }
+
+    private WorkDTO mapToDTO(Work work){
+        WorkDTO workDTO = new WorkDTO();
+        workDTO.setSummary(work.getSummary());
+        workDTO.setDateReception(work.getDateReception());
+        workDTO.setDatePickup(work.getDatePickup());
+
+        return workDTO;
     }
 
     private WorkDataDTO mapToDataDTO(Work work){
